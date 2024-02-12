@@ -21,8 +21,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          ls -ls && pwd
-          cd $GITHUB_WORKSPACE/api/jpo-conflictmonitor/
+          cd $GITHUB_WORKSPACE/api/jpo-conflictmonitor
           ls -la && pwd 
           mvn -e -X clean install
           cd ../jpo-conflictvisualizer-api
