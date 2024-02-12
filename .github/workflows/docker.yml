@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        component: ['api', 'gui', 'keycloak']
+        component: ['api', 'keycloak']
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,4 +31,4 @@ jobs:
           context: ./${{ matrix.component }}
           file: ./${{ matrix.component }}/Dockerfile
           push: false
-          tags: usdotjpoode/jpo-conflictvisualizer-${{ matrix.component }}:${{ github.ref_name }}-${{ github.sha }}
+          tags: usdotjpoode/jpo-conflictvisualizer-${{ matrix.component }}:${{ github.ref_name }}
