@@ -21,7 +21,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          # cd $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-conflictmonitor/
-          # mvn -e -X clean install
+          cd $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-conflictmonitor/
+          mvn -e -X clean install
           cd $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api
           mvn -e -X clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.projectKey=usdot-jpo-ode_jpo-conflictvisualizer -Dsonar.projectName=jpo-conflictvisualizer -Dsonar.organization=usdot-jpo-ode -Dsonar.host.url=https://sonarcloud.io -Dsonar.branch.name=$GITHUB_REF_NAME
