@@ -24,7 +24,7 @@ jobs:
           cd $GITHUB_WORKSPACE/api
           rm -rf /jpo-conflictmonitor
           ls -la && pwd
-          git-force-clone https://github.com/usdot-jpo-ode/jpo-conflictmonitor.git
+          git clone --force https://github.com/usdot-jpo-ode/jpo-conflictmonitor.git
           cd $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-conflictmonitor/
           mvn -e -X clean install
           cd $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api
