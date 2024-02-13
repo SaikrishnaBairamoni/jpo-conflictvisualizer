@@ -19,12 +19,14 @@ jobs:
         with:
           java-version: "21"
           distribution: "temurin"
-
-      - name: Remove outdated submodule
+      - name: Update submodules to latest commits
         run: |
-          cd $GITHUB_WORKSPACE/api
-          rm -rf jpo-conflictmonitor 
-          ls -la && pwd
+          git submodule update --init --recursive --remote
+      # - name: Remove outdated submodule
+      #   run: |
+      #     cd $GITHUB_WORKSPACE/api
+      #     rm -rf jpo-conflictmonitor 
+      #     ls -la && pwd
 
       - name: Clone latest version of the submodule
         run: |
