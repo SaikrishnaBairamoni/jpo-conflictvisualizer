@@ -14,11 +14,6 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          java-version: "21"
-          distribution: "temurin"
       - name: Update submodules to latest commits
         run: |
           git submodule update --init --recursive --remote
@@ -27,7 +22,12 @@ jobs:
       #     cd $GITHUB_WORKSPACE/api
       #     rm -rf jpo-conflictmonitor 
       #     ls -la && pwd
-
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: "21"
+          distribution: "temurin"
+          
       - name: Clone latest version of the submodule
         run: |
           git clone https://github.com/usdot-jpo-ode/jpo-conflictmonitor.git
