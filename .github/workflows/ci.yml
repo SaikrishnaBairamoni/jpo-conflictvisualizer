@@ -17,26 +17,50 @@ jobs:
       - name: Update submodules to latest commits
         run: |
           git submodule update --init --recursive --remote
-      # - name: Remove outdated submodule
-      #   run: |
-      #     cd $GITHUB_WORKSPACE/api
-      #     rm -rf jpo-conflictmonitor 
-      #     ls -la && pwd
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           java-version: "21"
           distribution: "temurin"
           
-      - name: Clone latest version of the submodule
-        run: |
-          git clone https://github.com/usdot-jpo-ode/jpo-conflictmonitor.git
-          cd jpo-conflictmonitor/jpo-conflictmonitor/
-          mvn -e -X clean install
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-m2
 
-      - name: Build and run Sonar analysis for jpo-conflictvisualizer-api
+      - name: Build jpo-ode module
+        run: |
+          mvn -f ./jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/pom.xml install -DskipTests
+
+      - name: Build jpo-geojsonconverter module
+        run: |
+          mvn -f ./jpo-conflictmonitor/jpo-geojsonconverter/jpo-geojsonconverter/pom.xml clean install -DskipTests
+
+      - name: Build jpo-conflictmonitor module
+        run: |
+          mvn -f ./jpo-conflictmonitor/jpo-conflictmonitor/pom.xml clean install -DskipTests
+
+      - name: Package jpo-conflictvisualizer-api
+        run: |
+          mvn -f ./jpo-conflictvisualizer-api/pom.xml clean package -DskipTests
+
+      - name: Build and run Sonar analysis for jpo-conflictvisualizer-ap
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          cd $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api
-          mvn -e -X clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.projectKey=usdot-jpo-ode_jpo-conflictvisualizer -Dsonar.projectName=jpo-conflictvisualizer -Dsonar.organization=usdot-jpo-ode -Dsonar.host.url=https://sonarcloud.io -Dsonar.branch.name=$GITHUB_REF_NAME
+          mvn -f ./jpo-conflictvisualizer-api/pom.xml sonar:sonar \
+              -Dsonar.projectKey=usdot-jpo-ode_jpo-conflictvisualizer \
+              -Dsonar.organization=usdot-jpo-ode \
+              -Dsonar.host.url=https://sonarcloud.io \
+              -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
+      # - name: Build and run Sonar analysis for jpo-conflictvisualizer-api
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #   run: |
+      #     cd $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api
+      #     mvn -e -X clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.projectKey=usdot-jpo-ode_jpo-conflictvisualizer -Dsonar.projectName=jpo-conflictvisualizer -Dsonar.organization=usdot-jpo-ode -Dsonar.host.url=https://sonarcloud.io -Dsonar.branch.name=$GITHUB_REF_NAME
