@@ -30,6 +30,13 @@ jobs:
       #       ${{ runner.os }}-m2
       - name: Copy the required files 
         run: |
+          mkdir -p $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-common/src
+          mkdir -p $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-plugins/src
+          mkdir -p $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-core/src
+          mkdir -p $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-svcs/src
+          mkdir -p $GITHUB_WORKSPACE/api/jpo-geojsonconverter/src
+          mkdir -p $GITHUB_WORKSPACE/api/jpo-conflictmonitor/src
+          mkdir -p $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api/src     
           cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/pom.xml $GITHUB_WORKSPACE/api/jpo-ode/
           cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/jpo-ode-common/pom.xml $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-common/
           cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/jpo-ode-common/src $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-common/
