@@ -32,19 +32,20 @@ jobs:
         run: |
           cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/pom.xml $GITHUB_WORKSPACE/api/jpo-ode/
           cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/jpo-ode-common/pom.xml $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-common/
-          cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/jpo-ode-common/src $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-common/src
+          cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/jpo-ode-common/src $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-common/
           cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/jpo-ode-plugins/pom.xml $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-plugins/
-          cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/jpo-ode-plugins/src $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-plugins/src
+          cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/jpo-ode-plugins/src $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-plugins/
           cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/jpo-ode-core/pom.xml $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-core/
-          cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/jpo-ode-core/src $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-core/src/
+          cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/jpo-ode-core/src $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-core/
           cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/jpo-ode-svcs/pom.xml $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-svcs/
-          cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/jpo-ode-svcs/src $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-svcs/src 
+          cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/jpo-ode-svcs/src $GITHUB_WORKSPACE/api/jpo-ode/jpo-ode-svcs/
           cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-geojsonconverter/pom.xml $GITHUB_WORKSPACE/api/jpo-geojsonconverter/
-          cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-geojsonconverter/src $GITHUB_WORKSPACE/api/jpo-geojsonconverter/src
+          cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-geojsonconverter/src $GITHUB_WORKSPACE/api/jpo-geojsonconverter/
           cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-conflictmonitor/pom.xml $GITHUB_WORKSPACE/api/jpo-conflictmonitor/
-          cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-conflictmonitor/src $GITHUB_WORKSPACE/api/jpo-conflictmonitor/src
+          cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-conflictmonitor/src $GITHUB_WORKSPACE/api/jpo-conflictmonitor/
           cp -r $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api/pom.xml $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api/
-          cp -r $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api/src $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api/src  
+          cp -r $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api/src $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api/
+    
       - name: Build jpo-ode module
         run: |
           mvn -f $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode/pom.xml install -DskipTests
