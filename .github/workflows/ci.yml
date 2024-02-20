@@ -50,8 +50,6 @@ jobs:
           cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-geojsonconverter/src $GITHUB_WORKSPACE/api/jpo-geojsonconverter/
           cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-conflictmonitor/pom.xml $GITHUB_WORKSPACE/api/jpo-conflictmonitor/
           cp -r $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-conflictmonitor/src $GITHUB_WORKSPACE/api/jpo-conflictmonitor/
-          cp -r $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api/pom.xml $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api/
-          cp -r $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api/src $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api/
     
       - name: Build jpo-ode module
         run: |
