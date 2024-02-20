@@ -17,11 +17,11 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          java-version: "11"
-          distribution: "temurin"
+      # - name: Set up JDK
+      #   uses: actions/setup-java@v4
+      #   with:
+      #     java-version: "11"
+      #     distribution: "temurin"
           
       - name: Build jpo-ode module
         run: |
@@ -31,9 +31,9 @@ jobs:
         run: |
           mvn -f $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-geojsonconverter/pom.xml clean install -DskipTests
 
-      # - name: Build jpo-conflictmonitor module
-      #   run: |
-      #     mvn -f $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-conflictmonitor/pom.xml clean install -DskipTests
+      - name: Build jpo-conflictmonitor module
+        run: |
+          mvn -f $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-conflictmonitor/pom.xml clean install -DskipTests
 
       - name: Package jpo-conflictvisualizer-api
         run: |
