@@ -3,7 +3,6 @@ name: "DockerHub Build and Push"
 on:
   push:
     branches:
-      - "develop"
       - "master"
       - "release/*"
 jobs:
