@@ -31,6 +31,7 @@ jobs:
           mvn install -DskipTests
           cd $GITHUB_WORKSPACE/api/jpo-conflictmonitor/test-message-sender
           mvn clean install -DskipTests
+          ls -la && pwd
           cd ../jpo-conflictmonitor
           mvn clean install -DskipTests
           cd $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api
