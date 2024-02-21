@@ -18,7 +18,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v4 # Match the JDK setup from the submodule CI
         with:
-          java-version: '21'
+          java-version: '11'
           distribution: 'temurin'
 
       - name: Build and Run Sonar Analysis
@@ -31,7 +31,6 @@ jobs:
           mvn install -DskipTests
           cd $GITHUB_WORKSPACE/api/jpo-conflictmonitor/test-message-sender
           mvn clean install -DskipTests
-          ls -la && pwd
           cd ../jpo-conflictmonitor
           mvn clean install -DskipTests
           cd $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api
