@@ -25,8 +25,15 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          cd $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api
+          cd $GITHUB_WORKSPACE/api/jpo-conflictmonitor/jpo-geojsonconverter/jpo-ode
+          mvn install -DskipTests
+          cd ../jpo-geojsonconverter
+          mvn install -DskipTests
+          cd $GITHUB_WORKSPACE/api/jpo-conflictmonitor/test-message-sender
+          mvn -e -X clean install
+          cd $GITHUB_WORKSPACE/jpo-conflictmonitor
           mvn -e -X clean install 
+          cd $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api
           mvn -e -X clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar \
               -Dsonar.projectKey=<your_project_key> \
               -Dsonar.projectName=<your_project_name> \
