@@ -34,9 +34,4 @@ jobs:
           cd ../jpo-conflictmonitor
           mvn clean install -DskipTests
           cd $GITHUB_WORKSPACE/api/jpo-conflictvisualizer-api
-          mvn -e -X clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar \
-              -Dsonar.projectKey=<your_project_key> \
-              -Dsonar.projectName=<your_project_name> \
-              -Dsonar.organization=<your_sonar_organization> \
-              -Dsonar.host.url=https://sonarcloud.io \
-              -Dsonar.branch.name=$GITHUB_REF_NAME
+          mvn -e -X clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.projectKey=usdot-jpo-ode_jpo-conflictvisualizer -Dsonar.projectName=jpo-conflictvisualizer -Dsonar.organization=usdot-jpo-ode -Dsonar.host.url=https://sonarcloud.io -Dsonar.branch.name=$GITHUB_REF_NAME
