@@ -18,7 +18,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v4 # Match the JDK setup from the submodule CI
         with:
-          java-version: '11'
+          java-version: '21'
           distribution: 'temurin'
 
       - name: Build and Run Sonar Analysis
