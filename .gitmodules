@@ -1,4 +1,4 @@
 [submodule "api/jpo-conflictmonitor"]
 	path = api/jpo-conflictmonitor
 	url = https://github.com/usdot-jpo-ode/jpo-conflictmonitor
-    branch = notification-fixes
+    branch = develop

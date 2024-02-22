@@ -71,6 +71,9 @@ services:
       options:
         max-size: "10m"
         max-file: "5"
+    depends_on:
+      keycloak:
+        condition: service_started
 
 volumes:
   keycloak:
